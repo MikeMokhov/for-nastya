@@ -241,99 +241,39 @@ section {
   border: 2px solid rgba(255, 182, 193, 0.6);
 }
 
-/* Ginger cat — inside hero card */
+/* Ginger cat — animated video */
 .hero-cat {
   width: 100%;
-  max-width: 400px;
+  max-width: 320px;
   margin: 0 auto 1rem;
   line-height: 0;
   opacity: 1;
   display: block;
 }
 
-.ginger-cat {
+.envelope-cat {
+  max-width: 280px;
+}
+
+.cat-video,
+.cat-video-fallback {
   width: 100%;
   height: auto;
-  overflow: visible;
+  display: block;
+  background: transparent;
+  pointer-events: none;
 }
 
-.cat-body {
-  transform-origin: 190px 232px;
-  animation: catBounce 2.4s ease-in-out infinite;
+.cat-video-fallback {
+  display: none;
 }
 
-.cat-head {
-  transform-origin: 132px 182px;
-  animation: catHeadBob 2.4s ease-in-out infinite;
+.cat-fallback .cat-video {
+  display: none;
 }
 
-.cat-tail {
-  transform-origin: 285px 218px;
-  animation: catTailWag 1.8s ease-in-out infinite;
-}
-
-.cat-paw-play {
-  transform-origin: 295px 217px;
-  animation: catPawBat 1.2s ease-in-out infinite;
-}
-
-.cat-yarn {
-  transform-origin: 355px 228px;
-  animation: yarnRoll 1.2s ease-in-out infinite;
-}
-
-.cat-ear-left {
-  transform-origin: 98px 100px;
-  animation: earTwitch 3s ease-in-out infinite;
-}
-
-.cat-ear-right {
-  transform-origin: 162px 100px;
-  animation: earTwitch 3s ease-in-out 0.5s infinite;
-}
-
-.cat-eye-left,
-.cat-eye-right {
-  animation: catBlink 4s ease-in-out infinite;
-}
-
-@keyframes catBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-@keyframes catHeadBob {
-  0%, 100% { transform: rotate(0deg); }
-  30% { transform: rotate(-3deg); }
-  70% { transform: rotate(2deg); }
-}
-
-@keyframes catTailWag {
-  0%, 100% { transform: rotate(-8deg); }
-  50% { transform: rotate(18deg); }
-}
-
-@keyframes catPawBat {
-  0%, 100% { transform: rotate(0deg) translateY(0); }
-  40% { transform: rotate(-28deg) translateY(-12px); }
-  60% { transform: rotate(-18deg) translateY(-6px); }
-}
-
-@keyframes yarnRoll {
-  0%, 100% { transform: translateX(0) rotate(0deg); }
-  40% { transform: translateX(-14px) rotate(-25deg); }
-  60% { transform: translateX(-8px) rotate(-12deg); }
-}
-
-@keyframes earTwitch {
-  0%, 90%, 100% { transform: rotate(0deg); }
-  93% { transform: rotate(-8deg); }
-  96% { transform: rotate(4deg); }
-}
-
-@keyframes catBlink {
-  0%, 92%, 100% { transform: scaleY(1); }
-  95% { transform: scaleY(0.1); }
+.cat-fallback .cat-video-fallback {
+  display: block;
 }
 
 .hero-photo {
@@ -769,18 +709,8 @@ section {
   }
   .floating-heart, .sparkle { display: none; }
   .fade-in { opacity: 1; transform: none; }
-
-  .cat-body,
-  .cat-head,
-  .cat-tail,
-  .cat-paw-play,
-  .cat-yarn,
-  .cat-ear-left,
-  .cat-ear-right,
-  .cat-eye-left,
-  .cat-eye-right {
-    animation: none !important;
-  }
+  .cat-video { display: none; }
+  .cat-video-fallback { display: block; }
 }
 
 @media (max-width: 480px) {
