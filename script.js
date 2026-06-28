@@ -56,24 +56,8 @@ let lightboxIndex = 0;
 let letterStarted = false;
 let scratchRevealed = false;
 
-// --- Cat video fallback (Safari / Telegram) ---
-function initCatVideo() {
-  document.querySelectorAll('.hero-cat, .envelope-cat').forEach((wrap) => {
-    const video = wrap.querySelector('.cat-video');
-    if (!video) return;
-
-    const useFallback = () => wrap.classList.add('cat-fallback');
-
-    if (!video.canPlayType('video/webm')) {
-      useFallback();
-      return;
-    }
-
-    video.addEventListener('error', useFallback, { once: true });
-    video.play().catch(useFallback);
-  });
-}
-
+// --- Utils ---
+function parsePhotoDate(src) {
   const match = src.match(/photo_(\d{4})-(\d{2})-\d{2}/);
   if (!match) return '';
   const year = match[1];
@@ -538,8 +522,8 @@ function initYesButton() {
 
 // --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
+  if (window.mountGingerCat) window.mountGingerCat();
   initEnvelopeGate();
-  initCatVideo();
   initHeroPhoto();
   createHearts();
   createSparkles();
