@@ -283,12 +283,12 @@ section {
 }
 
 .cat-ear-left {
-  transform-origin: 88px 95px;
+  transform-origin: 88px 108px;
   animation: earTwitch 3s ease-in-out infinite;
 }
 
 .cat-ear-right {
-  transform-origin: 142px 95px;
+  transform-origin: 142px 108px;
   animation: earTwitch 3s ease-in-out 0.5s infinite;
 }
 

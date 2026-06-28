@@ -10,12 +10,13 @@
     '<path d="M130 195 Q145 180 160 195" stroke="#b85a0a" stroke-width="4" fill="none" opacity="0.45"/>' +
     '<path d="M155 210 Q170 195 185 210" stroke="#b85a0a" stroke-width="4" fill="none" opacity="0.4"/>' +
     '<path d="M190 215 Q205 200 220 215" stroke="#b85a0a" stroke-width="4" fill="none" opacity="0.4"/></g>' +
-    '<g class="cat-head"><circle cx="115" cy="155" r="52" fill="#e87b15"/>' +
+    '<g class="cat-head">' +
+    '<g class="cat-ear cat-ear-left"><polygon points="76,115 88,72 106,104" fill="#e87b15"/>' +
+    '<polygon points="80,114 88,88 102,106" fill="#ffb6c1"/></g>' +
+    '<g class="cat-ear cat-ear-right"><polygon points="124,104 142,72 155,122" fill="#e87b15"/>' +
+    '<polygon points="128,106 142,82 151,118" fill="#ffb6c1"/></g>' +
+    '<circle cx="115" cy="155" r="52" fill="#e87b15"/>' +
     '<circle cx="115" cy="160" r="46" fill="#f5922a"/>' +
-    '<g class="cat-ear cat-ear-left"><polygon points="75,115 88,75 105,118" fill="#e87b15"/>' +
-    '<polygon points="80,115 88,85 100,118" fill="#ffb6c1"/></g>' +
-    '<g class="cat-ear cat-ear-right"><polygon points="125,118 142,78 158,115" fill="#e87b15"/>' +
-    '<polygon points="130,118 142,88 152,115" fill="#ffb6c1"/></g>' +
     '<ellipse class="cat-eye cat-eye-left" cx="98" cy="150" rx="7" ry="9" fill="#3d2314"/>' +
     '<ellipse class="cat-eye cat-eye-right" cx="132" cy="150" rx="7" ry="9" fill="#3d2314"/>' +
     '<circle cx="100" cy="147" r="2.5" fill="white"/><circle cx="134" cy="147" r="2.5" fill="white"/>' +
