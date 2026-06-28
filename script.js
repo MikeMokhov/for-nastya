@@ -17,57 +17,52 @@ const LETTER_LINES = [
 const HERO_PHOTO = 'images/photo_2026-06-12_18-59-02.jpg';
 
 const PHOTOS = [
-  'images/photo_2025-03-08_20-58-44.jpg',
-  'images/photo_2025-05-01_14-46-47.jpg',
-  'images/photo_2025-05-04_13-06-22.jpg',
-  'images/photo_2025-05-24_13-48-32.jpg',
-  'images/photo_2025-05-30_22-07-47.jpg',
-  'images/photo_2025-06-22_00-30-13.jpg',
-  'images/photo_2025-06-29_09-48-17.jpg',
-  'images/photo_2025-07-13_18-45-08.jpg',
-  'images/photo_2025-07-19_18-02-53.jpg',
-  'images/photo_2025-07-30_16-09-50.jpg',
-  'images/photo_2025-08-11_18-20-33.jpg',
-  'images/photo_2025-10-15_23-47-28.jpg',
-  'images/photo_2025-11-02_14-55-03.jpg',
-  'images/photo_2025-12-13_21-48-03.jpg',
-  'images/photo_2025-12-31_22-24-13.jpg',
-  'images/photo_2026-03-29_19-01-40.jpg',
-  'images/photo_2026-05-28_12-03-50.jpg',
-  'images/photo_2026-06-06_16-20-06.jpg',
-  'images/photo_2026-06-12_18-59-02.jpg',
-  'images/photo_2026-06-18_11-50-12.jpg',
-  'images/photo_2026-06-28_13-43-50.jpg',
-  'images/photo_2026-06-28_13-44-18.jpg',
-  'images/photo_2026-06-28_15-21-14.jpg',
-  'images/photo_2026-06-28_15-23-11.jpg',
-  'images/photo_2026-06-28_15-23-14.jpg',
-  'images/photo_2026-06-28_15-23-17.jpg',
-  'images/photo_2026-06-28_15-23-20.jpg',
-  'images/photo_2026-06-28_15-23-24.jpg',
-  'images/photo_2026-06-28_15-23-27.jpg',
-  'images/photo_2026-06-28_15-23-30.jpg',
-  'images/photo_2026-06-28_15-23-33.jpg',
-  'images/photo_2026-06-28_15-23-36.jpg',
-  'images/photo_2026-06-28_15-23-39.jpg',
-  'images/photo_2026-06-28_15-23-45.jpg',
-  'images/photo_2026-06-28_15-23-48.jpg',
-  'images/photo_2026-06-28_15-23-51.jpg',
-  'images/photo_2026-06-28_15-23-53.jpg',
-  'images/photo_2026-06-28_15-24-01.jpg',
-  'images/photo_2026-06-28_15-24-05.jpg',
-  'images/photo_2026-06-28_15-24-08.jpg',
-  'images/photo_2026-06-28_15-24-12.jpg',
-  'images/photo_2026-06-28_15-24-15.jpg',
-  'images/photo_2026-06-28_15-24-18.jpg',
-  'images/photo_2026-06-28_15-24-21.jpg',
-  'images/photo_2026-06-28_15-24-25.jpg',
-  'images/photo_2026-06-28_15-24-28.jpg',
-];
-
-const MONTHS_RU = [
-  'Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь',
-  'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь',
+  { src: 'images/photo_2025-03-08_20-58-44.jpg', caption: 'Наше самое начало 💕' },
+  { src: 'images/photo_2025-05-01_14-46-47.jpg', caption: 'С тобой даже обычный день — праздник' },
+  { src: 'images/photo_2025-05-04_13-06-22.jpg', caption: 'Ты смеёшься — и мир светлеет' },
+  { src: 'images/photo_2025-05-24_13-48-32.jpg', caption: 'Запомнил этот момент навсегда' },
+  { src: 'images/photo_2025-05-30_22-07-47.jpg', caption: 'Моя любимая улыбка' },
+  { src: 'images/photo_2025-06-22_00-30-13.jpg', caption: 'Лето с тобой — самое тёплое' },
+  { src: 'images/photo_2025-06-29_09-48-17.jpg', caption: 'Не хочу, чтобы этот день кончался' },
+  { src: 'images/photo_2025-07-13_18-45-08.jpg', caption: 'Ты — моё маленькое счастье' },
+  { src: 'images/photo_2025-07-19_18-02-53.jpg', caption: 'Смотрю на тебя и таю' },
+  { src: 'images/photo_2025-07-30_16-09-50.jpg', caption: 'Вот она — моя нежность' },
+  { src: 'images/photo_2025-08-11_18-20-33.jpg', caption: 'С тобой хочется остановить время' },
+  { src: 'images/photo_2025-10-15_23-47-28.jpg', caption: 'Ты делаешь осень розовой' },
+  { src: 'images/photo_2025-11-02_14-55-03.jpg', caption: 'Мой уютный ноябрь' },
+  { src: 'images/photo_2025-12-13_21-48-03.jpg', caption: 'Наша зимняя сказка' },
+  { src: 'images/photo_2025-12-31_22-24-13.jpg', caption: 'Новый год — с тобой' },
+  { src: 'images/photo_2026-03-29_19-01-40.jpg', caption: 'Весна, и снова ты' },
+  { src: 'images/photo_2026-05-28_12-03-50.jpg', caption: 'Ты — лучшая часть мая' },
+  { src: 'images/photo_2026-06-06_16-20-06.jpg', caption: 'Солнечный день, солнечная ты' },
+  { src: 'images/photo_2026-06-12_18-59-02.jpg', caption: 'Моё любимое фото' },
+  { src: 'images/photo_2026-06-18_11-50-12.jpg', caption: 'Сердце бьётся чаще — это ты' },
+  { src: 'images/photo_2026-06-28_13-43-50.jpg', caption: 'Доброе утро, красавица' },
+  { src: 'images/photo_2026-06-28_13-44-18.jpg', caption: 'С тобой каждая секунда — кадр' },
+  { src: 'images/photo_2026-06-28_15-21-14.jpg', caption: 'Не отпускай мою руку' },
+  { src: 'images/photo_2026-06-28_15-23-11.jpg', caption: 'Ты — причина моей улыбки' },
+  { src: 'images/photo_2026-06-28_15-23-14.jpg', caption: 'Между нами — только тепло' },
+  { src: 'images/photo_2026-06-28_15-23-17.jpg', caption: 'Смотри, как ты прекрасна' },
+  { src: 'images/photo_2026-06-28_15-23-20.jpg', caption: 'Хочу так — всегда' },
+  { src: 'images/photo_2026-06-28_15-23-24.jpg', caption: 'Мой любимый взгляд' },
+  { src: 'images/photo_2026-06-28_15-23-27.jpg', caption: 'Ты — мечта, ставшая реальностью' },
+  { src: 'images/photo_2026-06-28_15-23-30.jpg', caption: 'Пусть этот миг не кончается' },
+  { src: 'images/photo_2026-06-28_15-23-33.jpg', caption: 'Рядом с тобой — дом' },
+  { src: 'images/photo_2026-06-28_15-23-36.jpg', caption: 'Ты пахнешь счастьем' },
+  { src: 'images/photo_2026-06-28_15-23-39.jpg', caption: 'Моя Анастасия' },
+  { src: 'images/photo_2026-06-28_15-23-45.jpg', caption: 'Красота, от которой замираю' },
+  { src: 'images/photo_2026-06-28_15-23-48.jpg', caption: 'Люблю тебя в каждой детали' },
+  { src: 'images/photo_2026-06-28_15-23-51.jpg', caption: 'Наш маленький мир' },
+  { src: 'images/photo_2026-06-28_15-23-53.jpg', caption: 'Ты — моё «навсегда»' },
+  { src: 'images/photo_2026-06-28_15-24-01.jpg', caption: 'Счастье имеет твоё лицо' },
+  { src: 'images/photo_2026-06-28_15-24-05.jpg', caption: 'Не могу без тебя' },
+  { src: 'images/photo_2026-06-28_15-24-08.jpg', caption: 'Ты — мой самый лучший день' },
+  { src: 'images/photo_2026-06-28_15-24-12.jpg', caption: 'Обнимаю этот момент' },
+  { src: 'images/photo_2026-06-28_15-24-15.jpg', caption: 'В твоих глазах — весь мой мир' },
+  { src: 'images/photo_2026-06-28_15-24-18.jpg', caption: 'Милее некуда' },
+  { src: 'images/photo_2026-06-28_15-24-21.jpg', caption: 'Ты — всё, что мне нужно' },
+  { src: 'images/photo_2026-06-28_15-24-25.jpg', caption: 'Моё сердце — твоё' },
+  { src: 'images/photo_2026-06-28_15-24-28.jpg', caption: 'С тобой — навсегда 💗' },
 ];
 
 const HEART_EMOJIS = ['💗', '💕', '💖', '💝', '🩷', '❤️'];
@@ -81,14 +76,6 @@ let letterStarted = false;
 let scratchRevealed = false;
 
 // --- Utils ---
-function parsePhotoDate(src) {
-  const match = src.match(/photo_(\d{4})-(\d{2})-\d{2}/);
-  if (!match) return '';
-  const year = match[1];
-  const month = MONTHS_RU[parseInt(match[2], 10) - 1];
-  return `${month} ${year}`;
-}
-
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -270,20 +257,20 @@ async function startTypewriter() {
 function initPhotoGallery() {
   const grid = document.getElementById('photo-grid');
 
-  PHOTOS.forEach((src, i) => {
+  PHOTOS.forEach((photo, i) => {
     const card = document.createElement('button');
     card.type = 'button';
     card.className = 'photo-card';
     card.dataset.index = String(i);
 
     const img = document.createElement('img');
-    img.src = src;
-    img.alt = parsePhotoDate(src);
+    img.src = photo.src;
+    img.alt = photo.caption;
     img.loading = 'lazy';
 
     const caption = document.createElement('span');
-    caption.className = 'photo-date';
-    caption.textContent = parsePhotoDate(src);
+    caption.className = 'photo-caption';
+    caption.textContent = photo.caption;
 
     card.appendChild(img);
     card.appendChild(caption);
@@ -306,9 +293,9 @@ function closeLightbox() {
 }
 
 function updateLightbox() {
-  const src = PHOTOS[lightboxIndex];
-  document.getElementById('lightbox-img').src = src;
-  document.getElementById('lightbox-caption').textContent = parsePhotoDate(src);
+  const photo = PHOTOS[lightboxIndex];
+  document.getElementById('lightbox-img').src = photo.src;
+  document.getElementById('lightbox-caption').textContent = photo.caption;
 }
 
 function initLightbox() {
