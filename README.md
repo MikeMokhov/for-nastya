@@ -36,10 +36,24 @@ npx serve .
 
 ## Публикация на GitHub Pages
 
-1. Создайте публичный репозиторий на GitHub
-2. Загрузите файлы: `git push -u origin main`
-3. В репозитории: **Settings → Pages → Source: Deploy from branch → `main` / `/ (root)`**
-4. Сайт будет доступен по адресу: `https://<ваш-username>.github.io/<имя-репозитория>/`
+Репозиторий уже инициализирован, первый коммит создан. Для публикации выполните:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File deploy.ps1
+```
+
+Скрипт:
+1. Авторизует вас в GitHub (если ещё не авторизованы)
+2. Создаст публичный репозиторий `for-nastya` и загрузит файлы
+3. Включит GitHub Pages
+
+Сайт будет доступен по адресу: `https://<ваш-username>.github.io/for-nastya/`
+
+### Ручная публикация
+
+1. `gh auth login`
+2. `gh repo create for-nastya --public --source=. --remote=origin --push`
+3. **Settings → Pages → Source: Deploy from branch → `main` / `/ (root)`**
 
 ## Структура
 
