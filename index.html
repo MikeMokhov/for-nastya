@@ -3,9 +3,11 @@
 <head>
   <script>
     (function () {
-      var v = '5';
-      if (!location.search.includes('v=')) {
-        location.replace(location.pathname + '?v=' + v + location.hash);
+      var v = '6';
+      var params = new URLSearchParams(location.search);
+      if (params.get('v') !== v) {
+        params.set('v', v);
+        location.replace(location.pathname + '?' + params.toString() + location.hash);
       }
     })();
   </script>
@@ -23,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body>
   <div id="envelope-gate" class="envelope-gate">
@@ -115,6 +117,6 @@
 
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>
