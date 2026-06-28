@@ -70,11 +70,54 @@ function delay(ms) {
 }
 
 // --- Envelope gate ---
+function createGateHearts() {
+  if (prefersReducedMotion) return;
+  const container = document.getElementById('gate-hearts-container');
+  if (!container) return;
+
+  for (let i = 0; i < 14; i++) {
+    const heart = document.createElement('span');
+    heart.className = 'gate-side-heart';
+    heart.textContent = HEART_EMOJIS[Math.floor(Math.random() * HEART_EMOJIS.length)];
+    const fromLeft = Math.random() > 0.5;
+    heart.style.left = fromLeft
+      ? `${2 + Math.random() * 28}%`
+      : `${70 + Math.random() * 26}%`;
+    heart.style.bottom = `${Math.random() * 30}%`;
+    heart.style.animationDuration = `${6 + Math.random() * 8}s`;
+    heart.style.animationDelay = `${Math.random() * 6}s`;
+    heart.style.fontSize = `${0.75 + Math.random() * 0.9}rem`;
+    container.appendChild(heart);
+  }
+}
+
+function burstEnvelopeSparkles() {
+  if (prefersReducedMotion) return;
+  const container = document.getElementById('envelope-sparkles');
+  if (!container) return;
+
+  const symbols = ['✨', '💕', '💖', '⭐', '🩷'];
+  for (let i = 0; i < 12; i++) {
+    const spark = document.createElement('span');
+    spark.className = 'envelope-sparkle';
+    spark.textContent = symbols[i % symbols.length];
+    const angle = (i / 12) * Math.PI * 2;
+    const dist = 50 + Math.random() * 60;
+    spark.style.setProperty('--sx', `${Math.cos(angle) * dist}px`);
+    spark.style.setProperty('--sy', `${Math.sin(angle) * dist - 30}px`);
+    spark.style.animationDelay = `${Math.random() * 0.15}s`;
+    container.appendChild(spark);
+    setTimeout(() => spark.remove(), 1000);
+  }
+}
+
 function initEnvelopeGate() {
   const gate = document.getElementById('envelope-gate');
   const main = document.getElementById('main-content');
   const btn = document.getElementById('open-envelope');
   const envelope = document.getElementById('envelope');
+
+  createGateHearts();
 
   if (sessionStorage.getItem('letterOpened') === 'true') {
     gate.classList.add('hidden');
@@ -83,9 +126,13 @@ function initEnvelopeGate() {
   }
 
   btn.addEventListener('click', () => {
-    envelope.classList.add('open');
     btn.disabled = true;
-    if (window.mountGingerCat) window.mountGingerCat();
+    envelope.classList.add('opening');
+
+    setTimeout(() => {
+      envelope.classList.add('open');
+      burstEnvelopeSparkles();
+    }, 200);
 
     setTimeout(() => {
       gate.classList.add('fade-out');
@@ -95,8 +142,8 @@ function initEnvelopeGate() {
       setTimeout(() => {
         gate.classList.add('hidden');
         document.getElementById('hero').classList.add('visible');
-      }, 600);
-    }, 1200);
+      }, 800);
+    }, 2000);
   });
 }
 
