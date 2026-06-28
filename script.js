@@ -85,6 +85,7 @@ function initEnvelopeGate() {
   btn.addEventListener('click', () => {
     envelope.classList.add('open');
     btn.disabled = true;
+    if (window.mountGingerCat) window.mountGingerCat();
 
     setTimeout(() => {
       gate.classList.add('fade-out');
@@ -521,6 +522,7 @@ function initYesButton() {
 
 // --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
+  if (window.mountGingerCat) window.mountGingerCat();
   initEnvelopeGate();
   initHeroPhoto();
   createHearts();

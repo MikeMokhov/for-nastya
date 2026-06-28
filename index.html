@@ -3,7 +3,7 @@
 <head>
   <script>
     (function () {
-      var v = '10';
+      var v = '11';
       var params = new URLSearchParams(location.search);
       if (params.get('v') !== v) {
         params.set('v', v);
@@ -25,10 +25,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
+  <style>
+    .hero-cat,.envelope-cat{display:block!important;opacity:1!important;width:100%;max-width:400px;margin:0 auto;line-height:0}
+    .envelope-cat{max-width:320px;margin-bottom:1rem}
+    .ginger-cat{width:100%;height:auto}
+    .cat-body{transform-origin:180px 200px;animation:catBounce 2.4s ease-in-out infinite}
+    .cat-head{transform-origin:115px 165px;animation:catHeadBob 2.4s ease-in-out infinite}
+    .cat-tail{transform-origin:260px 195px;animation:catTailWag 1.8s ease-in-out infinite}
+    .cat-paw-play{transform-origin:268px 210px;animation:catPawBat 1.2s ease-in-out infinite}
+    .cat-yarn{transform-origin:330px 210px;animation:yarnRoll 1.2s ease-in-out infinite}
+    .cat-ear-left{transform-origin:88px 95px;animation:earTwitch 3s ease-in-out infinite}
+    .cat-ear-right{transform-origin:142px 95px;animation:earTwitch 3s ease-in-out 0.5s infinite}
+    .cat-eye-left,.cat-eye-right{animation:catBlink 4s ease-in-out infinite}
+    @keyframes catBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+    @keyframes catHeadBob{0%,100%{transform:rotate(0)}30%{transform:rotate(-3deg)}70%{transform:rotate(2deg)}}
+    @keyframes catTailWag{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(18deg)}}
+    @keyframes catPawBat{0%,100%{transform:rotate(0) translateY(0)}40%{transform:rotate(-28deg) translateY(-12px)}60%{transform:rotate(-18deg) translateY(-6px)}}
+    @keyframes yarnRoll{0%,100%{transform:translateX(0) rotate(0)}40%{transform:translateX(-14px) rotate(-25deg)}60%{transform:translateX(-8px) rotate(-12deg)}}
+    @keyframes earTwitch{0%,90%,100%{transform:rotate(0)}93%{transform:rotate(-8deg)}96%{transform:rotate(4deg)}}
+    @keyframes catBlink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(0.1)}}
+  </style>
 </head>
 <body>
   <div id="envelope-gate" class="envelope-gate">
+    <div id="envelope-cat" class="hero-cat envelope-cat"></div>
     <div class="envelope-scene">
       <div class="envelope" id="envelope">
         <div class="envelope-back"></div>
@@ -48,65 +69,13 @@
   <main id="main-content" class="main-hidden">
     <section class="hero fade-in" id="hero">
       <div class="hero-card">
+        <div id="hero-cat" class="hero-cat"></div>
         <img class="hero-photo" id="hero-photo" src="" alt="Анастасия и я">
         <p class="hero-subtitle">С любовью, только для тебя</p>
         <h1 class="hero-title">
           <span class="title-line">Анастасия</span>
           <span class="title-line title-accent">Алексеевна</span>
         </h1>
-
-        <div class="hero-cat" aria-hidden="true">
-          <svg class="ginger-cat" viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg">
-            <g class="cat-yarn">
-              <circle cx="330" cy="210" r="38" fill="#ffb6c1"/>
-              <circle cx="330" cy="210" r="38" fill="none" stroke="#d63384" stroke-width="2" opacity="0.35"/>
-              <path d="M302 195 Q330 175 358 195" fill="none" stroke="#ff69b4" stroke-width="2.5" opacity="0.5"/>
-              <path d="M310 220 Q330 200 350 225" fill="none" stroke="#ff69b4" stroke-width="2" opacity="0.4"/>
-            </g>
-            <g class="cat-body">
-              <ellipse cx="180" cy="200" rx="95" ry="55" fill="#e87b15"/>
-              <ellipse cx="180" cy="205" rx="85" ry="45" fill="#f5922a"/>
-              <path d="M130 195 Q145 180 160 195" stroke="#b85a0a" stroke-width="4" fill="none" opacity="0.45"/>
-              <path d="M155 210 Q170 195 185 210" stroke="#b85a0a" stroke-width="4" fill="none" opacity="0.4"/>
-              <path d="M190 215 Q205 200 220 215" stroke="#b85a0a" stroke-width="4" fill="none" opacity="0.4"/>
-            </g>
-            <g class="cat-head">
-              <circle cx="115" cy="155" r="52" fill="#e87b15"/>
-              <circle cx="115" cy="160" r="46" fill="#f5922a"/>
-              <g class="cat-ear cat-ear-left">
-                <polygon points="75,115 88,75 105,118" fill="#e87b15"/>
-                <polygon points="80,115 88,85 100,118" fill="#ffb6c1"/>
-              </g>
-              <g class="cat-ear cat-ear-right">
-                <polygon points="125,118 142,78 158,115" fill="#e87b15"/>
-                <polygon points="130,118 142,88 152,115" fill="#ffb6c1"/>
-              </g>
-              <ellipse class="cat-eye cat-eye-left" cx="98" cy="150" rx="7" ry="9" fill="#3d2314"/>
-              <ellipse class="cat-eye cat-eye-right" cx="132" cy="150" rx="7" ry="9" fill="#3d2314"/>
-              <circle cx="100" cy="147" r="2.5" fill="white"/>
-              <circle cx="134" cy="147" r="2.5" fill="white"/>
-              <ellipse cx="115" cy="168" rx="5" ry="4" fill="#ffb6c1"/>
-              <path d="M115 172 L108 180 M115 172 L122 180" stroke="#b85a0a" stroke-width="2" stroke-linecap="round"/>
-              <line x1="70" y1="158" x2="40" y2="152" stroke="#b85a0a" stroke-width="1.5" opacity="0.6"/>
-              <line x1="70" y1="165" x2="38" y2="168" stroke="#b85a0a" stroke-width="1.5" opacity="0.6"/>
-              <line x1="160" y1="158" x2="190" y2="152" stroke="#b85a0a" stroke-width="1.5" opacity="0.6"/>
-              <line x1="160" y1="165" x2="192" y2="168" stroke="#b85a0a" stroke-width="1.5" opacity="0.6"/>
-            </g>
-            <g class="cat-tail">
-              <path d="M260 195 Q310 150 340 120 Q355 100 348 85" stroke="#e87b15" stroke-width="22" fill="none" stroke-linecap="round"/>
-              <path d="M260 195 Q310 150 340 120 Q355 100 348 85" stroke="#f5922a" stroke-width="16" fill="none" stroke-linecap="round"/>
-            </g>
-            <g class="cat-paws">
-              <ellipse cx="145" cy="248" rx="18" ry="12" fill="#e87b15"/>
-              <ellipse cx="210" cy="248" rx="18" ry="12" fill="#e87b15"/>
-              <g class="cat-paw-play">
-                <ellipse cx="268" cy="195" rx="16" ry="14" fill="#e87b15"/>
-                <ellipse cx="268" cy="198" rx="12" ry="10" fill="#ffb6c1" opacity="0.5"/>
-              </g>
-            </g>
-          </svg>
-        </div>
-
         <div class="scroll-hint" aria-hidden="true"><span>↓</span></div>
       </div>
     </section>
@@ -169,6 +138,7 @@
 
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
-  <script src="script.js?v=10"></script>
+  <script src="cat.js?v=11"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>
