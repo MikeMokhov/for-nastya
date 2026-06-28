@@ -7,36 +7,6 @@ const SURPRISE = {
   note: 'Розовое платье — необязательно, но будет мило 💕',
 };
 
-const PHOTOS = [
-  'images/photo_2025-03-08_20-58-44.jpg',
-  'images/photo_2025-05-01_14-46-47.jpg',
-  'images/photo_2025-05-04_13-06-22.jpg',
-  'images/photo_2025-05-24_13-48-32.jpg',
-  'images/photo_2025-05-30_22-07-47.jpg',
-  'images/photo_2025-06-22_00-30-13.jpg',
-  'images/photo_2025-06-29_09-48-17.jpg',
-  'images/photo_2025-07-13_18-45-08.jpg',
-  'images/photo_2025-07-19_18-02-53.jpg',
-  'images/photo_2025-07-30_16-09-50.jpg',
-  'images/photo_2025-08-11_18-20-33.jpg',
-  'images/photo_2025-10-15_23-47-28.jpg',
-  'images/photo_2025-11-02_14-55-03.jpg',
-  'images/photo_2025-12-13_21-48-03.jpg',
-  'images/photo_2025-12-31_22-24-13.jpg',
-  'images/photo_2026-03-29_19-01-40.jpg',
-  'images/photo_2026-05-28_12-03-50.jpg',
-  'images/photo_2026-06-06_16-20-06.jpg',
-  'images/photo_2026-06-12_18-59-02.jpg',
-  'images/photo_2026-06-18_11-50-12.jpg',
-  'images/photo_2026-06-28_13-43-50.jpg',
-  'images/photo_2026-06-28_13-44-18.jpg',
-];
-
-const VIDEOS = [
-  'images/IMG_0614.MOV',
-  'images/IMG_8611.MOV',
-];
-
 const HEART_EMOJIS = ['💗', '💕', '💖', '💝', '🩷', '❤️'];
 const CONFETTI_COLORS = ['#ff69b4', '#ffb6c1', '#d63384', '#ffc0cb', '#fff0f5', '#ff1493'];
 
@@ -226,30 +196,6 @@ function renderSurprise() {
     .join('');
 }
 
-// --- Gallery ---
-function initGallery() {
-  const grid = document.getElementById('gallery-grid');
-  const videosWrap = document.getElementById('gallery-videos');
-
-  PHOTOS.forEach((src) => {
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = '';
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    grid.appendChild(img);
-  });
-
-  VIDEOS.forEach((src) => {
-    const video = document.createElement('video');
-    video.src = src;
-    video.controls = true;
-    video.playsInline = true;
-    video.preload = 'metadata';
-    videosWrap.appendChild(video);
-  });
-}
-
 // --- Yes button handler ---
 function initYesButton() {
   const btnYes = document.getElementById('btn-yes');
@@ -278,7 +224,6 @@ function initYesButton() {
 document.addEventListener('DOMContentLoaded', () => {
   createHearts();
   createSparkles();
-  initGallery();
   initScrollAnimations();
   initRunawayButton();
   initYesButton();
