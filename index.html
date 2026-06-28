@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Для тебя, Анастасия</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="bg-layer" aria-hidden="true">
+    <div id="hearts-container"></div>
+    <div id="sparkles-container"></div>
+  </div>
+
+  <main>
+    <section class="hero fade-in">
+      <div class="hero-heart" aria-hidden="true">💗</div>
+      <p class="hero-subtitle">С любовью, только для тебя</p>
+      <h1 class="hero-title">
+        <span class="title-line">Анастасия</span>
+        <span class="title-line title-accent">Алексеевна</span>
+      </h1>
+      <div class="scroll-hint" aria-hidden="true">
+        <span>↓</span>
+      </div>
+    </section>
+
+    <section class="message fade-in">
+      <div class="message-card">
+        <p>Каждый день с тобой — как маленькое чудо.</p>
+        <p>Твоя улыбка делает мир мягче и светлее.</p>
+        <p>Я давно хотел сказать тебе кое-что важное…</p>
+        <p class="message-highlight">Ты — самое прекрасное, что случилось в моей жизни.</p>
+      </div>
+    </section>
+
+    <section class="question fade-in" id="question-section">
+      <h2 class="question-title">Пойдёшь со мной на свидание?</h2>
+      <div class="buttons-wrap" id="buttons-wrap">
+        <button type="button" class="btn btn-yes" id="btn-yes">Да, конечно!</button>
+        <button type="button" class="btn btn-no" id="btn-no">Нет</button>
+      </div>
+    </section>
+
+    <section class="surprise hidden" id="surprise-section" aria-live="polite">
+      <div class="surprise-card">
+        <div class="surprise-icon" aria-hidden="true">✨</div>
+        <h2 class="surprise-title">Ура! Жду тебя!</h2>
+        <div class="surprise-details" id="surprise-details"></div>
+        <p class="surprise-footer">До встречи, моя прекрасная 💕</p>
+      </div>
+    </section>
+  </main>
+
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <script src="script.js"></script>
+</body>
+</html>
