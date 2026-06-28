@@ -1,141 +1,17 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <script>
-    (function () {
-      if (!location.pathname.endsWith('nastya.html')) {
-        location.replace('nastya.html');
-      }
-    })();
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="refresh" content="0;url=nastya.html?v=15">
+  <script>location.replace('nastya.html?v=15');</script>
   <title>Для тебя, Анастасия</title>
-  <meta name="description" content="Особенное послание для Анастасии Алексеевны">
-  <meta property="og:title" content="Для тебя, Анастасия">
-  <meta property="og:description" content="Открой письмо — там кое-что важное 💕">
-  <meta property="og:image" content="https://mikemokhov.github.io/for-nastya/images/photo_2026-06-28_13-44-18.jpg">
-  <meta property="og:type" content="website">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%F0%9F%92%97</text></svg>">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=11">
-  <style>
-    .hero-cat,.envelope-cat{display:block!important;opacity:1!important;width:100%;max-width:400px;margin:0 auto;line-height:0}
-    .envelope-cat{max-width:320px;margin-bottom:1rem}
-    .ginger-cat{width:100%;height:auto}
-    .cat-body{transform-origin:180px 200px;animation:catBounce 2.4s ease-in-out infinite}
-    .cat-head{transform-origin:115px 165px;animation:catHeadBob 2.4s ease-in-out infinite}
-    .cat-tail{transform-origin:260px 195px;animation:catTailWag 1.8s ease-in-out infinite}
-    .cat-paw-play{transform-origin:268px 210px;animation:catPawBat 1.2s ease-in-out infinite}
-    .cat-yarn{transform-origin:330px 210px;animation:yarnRoll 1.2s ease-in-out infinite}
-    .cat-ear-left{transform-origin:88px 95px;animation:earTwitch 3s ease-in-out infinite}
-    .cat-ear-right{transform-origin:142px 95px;animation:earTwitch 3s ease-in-out 0.5s infinite}
-    .cat-eye-left,.cat-eye-right{animation:catBlink 4s ease-in-out infinite}
-    @keyframes catBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-    @keyframes catHeadBob{0%,100%{transform:rotate(0)}30%{transform:rotate(-3deg)}70%{transform:rotate(2deg)}}
-    @keyframes catTailWag{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(18deg)}}
-    @keyframes catPawBat{0%,100%{transform:rotate(0) translateY(0)}40%{transform:rotate(-28deg) translateY(-12px)}60%{transform:rotate(-18deg) translateY(-6px)}}
-    @keyframes yarnRoll{0%,100%{transform:translateX(0) rotate(0)}40%{transform:translateX(-14px) rotate(-25deg)}60%{transform:translateX(-8px) rotate(-12deg)}}
-    @keyframes earTwitch{0%,90%,100%{transform:rotate(0)}93%{transform:rotate(-8deg)}96%{transform:rotate(4deg)}}
-    @keyframes catBlink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(0.1)}}
-  </style>
 </head>
 <body>
-  <div id="envelope-gate" class="envelope-gate">
-    <div id="envelope-cat" class="hero-cat envelope-cat"></div>
-    <div class="envelope-scene">
-      <div class="envelope" id="envelope">
-        <div class="envelope-back"></div>
-        <div class="envelope-paper">💌</div>
-        <div class="envelope-flap"></div>
-        <div class="envelope-front"></div>
-      </div>
-    </div>
-    <button type="button" class="btn btn-open" id="open-envelope">Открыть письмо для Анастасии</button>
-  </div>
-
-  <div class="bg-layer" aria-hidden="true">
-    <div id="hearts-container"></div>
-    <div id="sparkles-container"></div>
-  </div>
-
-  <main id="main-content" class="main-hidden">
-    <section class="hero fade-in" id="hero">
-      <div class="hero-card">
-        <div id="hero-cat" class="hero-cat"></div>
-        <img class="hero-photo" id="hero-photo" src="" alt="Анастасия и я">
-        <p class="hero-subtitle">С любовью, только для тебя</p>
-        <h1 class="hero-title">
-          <span class="title-line">Анастасия</span>
-          <span class="title-line title-accent">Алексеевна</span>
-        </h1>
-        <div class="scroll-hint" aria-hidden="true"><span>↓</span></div>
-      </div>
-    </section>
-
-    <section class="message fade-in" id="letter-section">
-      <div class="message-card letter-paper">
-        <div id="letter-text" class="letter-text"></div>
-        <p class="message-highlight hidden" id="letter-highlight">Ты — самое прекрасное, что случилось в моей жизни.</p>
-      </div>
-    </section>
-
-    <section class="gallery fade-in" id="gallery-section">
-      <p class="gallery-caption">Наши моменты</p>
-      <div class="photo-grid" id="photo-grid"></div>
-    </section>
-
-    <section class="videos fade-in" id="videos-section">
-      <p class="gallery-caption">Наши видео</p>
-      <div class="gallery-videos">
-        <video controls playsinline preload="metadata">
-          <source src="images/IMG_0614.mp4" type="video/mp4">
-          <source src="images/IMG_0614.MOV" type="video/quicktime">
-        </video>
-        <video controls playsinline preload="metadata">
-          <source src="images/IMG_8611.mp4" type="video/mp4">
-          <source src="images/IMG_8611.MOV" type="video/quicktime">
-        </video>
-      </div>
-    </section>
-
-    <section class="question fade-in" id="question-section">
-      <h2 class="question-title">Пойдёшь со мной на свидание?</h2>
-      <div class="buttons-wrap" id="buttons-wrap">
-        <button type="button" class="btn btn-yes" id="btn-yes">Да, конечно!</button>
-        <button type="button" class="btn btn-no" id="btn-no">Нет</button>
-      </div>
-    </section>
-
-    <section class="surprise hidden" id="surprise-section" aria-live="polite">
-      <div class="surprise-card">
-        <div class="surprise-icon" aria-hidden="true">✨</div>
-        <h2 class="surprise-title">Ура! Жду тебя!</h2>
-        <p class="scratch-hint" id="scratch-hint">Сотри розовую плёнку, чтобы узнать детали</p>
-        <div class="scratch-wrap" id="scratch-wrap">
-          <div class="surprise-details" id="surprise-details"></div>
-          <canvas id="scratch-canvas"></canvas>
-        </div>
-        <p class="surprise-footer hidden" id="surprise-footer">До встречи, моя прекрасная 💕</p>
-      </div>
-    </section>
-  </main>
-
-  <div class="lightbox hidden" id="lightbox" role="dialog" aria-modal="true">
-    <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Закрыть">&times;</button>
-    <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Назад">‹</button>
-    <img class="lightbox-img" id="lightbox-img" src="" alt="">
-    <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Вперёд">›</button>
-    <p class="lightbox-caption" id="lightbox-caption"></p>
-  </div>
-
-  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
-
-  <script src="cat.js?v=11"></script>
-  <script src="script.js?v=11"></script>
+  <p style="font-family:sans-serif;text-align:center;margin-top:40vh;color:#db2777">
+    <a href="nastya.html?v=15" style="color:#db2777">Открыть письмо для Анастасии</a>
+  </p>
 </body>
 </html>
