@@ -232,24 +232,21 @@ section {
 
 .hero-card {
   width: 100%;
-  max-width: 420px;
-  padding: 2.5rem 2rem 2rem;
+  max-width: 440px;
+  padding: 2.5rem 2rem 1.5rem;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   border-radius: 28px;
   box-shadow: 0 16px 48px rgba(214, 51, 132, 0.2);
   border: 2px solid rgba(255, 182, 193, 0.6);
-  position: relative;
-  z-index: 2;
 }
 
-/* Ginger cat */
+/* Ginger cat — inside hero card */
 .hero-cat {
-  width: min(360px, 92vw);
-  margin-top: -0.5rem;
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 12px 24px rgba(214, 51, 132, 0.15));
+  width: 100%;
+  max-width: 400px;
+  margin: 0.5rem auto 0;
+  line-height: 0;
 }
 
 .ginger-cat {
@@ -387,7 +384,7 @@ section {
 }
 
 .scroll-hint {
-  margin-top: 3rem;
+  margin-top: 1rem;
   animation: bounce 2s ease-in-out infinite;
   color: var(--pink-deep);
   font-size: 1.5rem;
@@ -789,7 +786,7 @@ section {
   .hero { min-height: 70vh; }
   .hero-card { padding: 2rem 1.25rem 1.75rem; }
   .hero-photo { width: 130px; height: 130px; }
-  .hero-cat { width: min(300px, 95vw); margin-top: 0; }
+  .hero-cat { max-width: 100%; }
   .message-card { padding: 1.75rem 1.25rem; }
   .photo-grid { gap: 0.75rem; }
   .gallery-videos { grid-template-columns: 1fr; }
