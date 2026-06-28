@@ -3,7 +3,7 @@
 <head>
   <script>
     (function () {
-      var v = '4';
+      var v = '5';
       if (!location.search.includes('v=')) {
         location.replace(location.pathname + '?v=' + v + location.hash);
       }
@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
   <div id="envelope-gate" class="envelope-gate">
@@ -66,7 +66,7 @@
 
     <section class="gallery fade-in" id="gallery-section">
       <p class="gallery-caption">Наши моменты</p>
-      <div class="polaroid-track" id="polaroid-track"></div>
+      <div class="photo-grid" id="photo-grid"></div>
     </section>
 
     <section class="videos fade-in" id="videos-section">
@@ -115,6 +115,6 @@
 
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>

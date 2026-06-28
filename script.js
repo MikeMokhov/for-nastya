@@ -196,16 +196,14 @@ async function startTypewriter() {
   highlight.classList.add('highlight-reveal');
 }
 
-// --- Polaroid gallery ---
-function initPolaroidGallery() {
-  const track = document.getElementById('polaroid-track');
-  const tilts = [-3, 2, -2, 4, -4, 1, 3, -1, 2, -3, 4, -2, 1, -4, 3, -1, 2, -3, 4, -2, 1, 3];
+// --- Photo gallery grid ---
+function initPhotoGallery() {
+  const grid = document.getElementById('photo-grid');
 
   PHOTOS.forEach((src, i) => {
     const card = document.createElement('button');
     card.type = 'button';
-    card.className = 'polaroid';
-    card.style.setProperty('--tilt', `${tilts[i % tilts.length]}deg`);
+    card.className = 'photo-card';
     card.dataset.index = String(i);
 
     const img = document.createElement('img');
@@ -214,13 +212,13 @@ function initPolaroidGallery() {
     img.loading = 'lazy';
 
     const caption = document.createElement('span');
-    caption.className = 'polaroid-date';
+    caption.className = 'photo-date';
     caption.textContent = parsePhotoDate(src);
 
     card.appendChild(img);
     card.appendChild(caption);
     card.addEventListener('click', () => openLightbox(i));
-    track.appendChild(card);
+    grid.appendChild(card);
   });
 }
 
@@ -529,7 +527,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroBackground();
   createHearts();
   createSparkles();
-  initPolaroidGallery();
+  initPhotoGallery();
   initLightbox();
   initScrollAnimations();
   initRunawayButton();
