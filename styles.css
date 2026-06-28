@@ -220,7 +220,14 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem 0;
+  padding: 1rem 0 0;
+}
+
+.hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .hero-card {
@@ -232,6 +239,102 @@ section {
   border-radius: 28px;
   box-shadow: 0 16px 48px rgba(214, 51, 132, 0.2);
   border: 2px solid rgba(255, 182, 193, 0.6);
+  position: relative;
+  z-index: 2;
+}
+
+/* Ginger cat */
+.hero-cat {
+  width: min(360px, 92vw);
+  margin-top: -0.5rem;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 12px 24px rgba(214, 51, 132, 0.15));
+}
+
+.ginger-cat {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.cat-body {
+  transform-origin: 180px 200px;
+  animation: catBounce 2.4s ease-in-out infinite;
+}
+
+.cat-head {
+  transform-origin: 115px 165px;
+  animation: catHeadBob 2.4s ease-in-out infinite;
+}
+
+.cat-tail {
+  transform-origin: 260px 195px;
+  animation: catTailWag 1.8s ease-in-out infinite;
+}
+
+.cat-paw-play {
+  transform-origin: 268px 210px;
+  animation: catPawBat 1.2s ease-in-out infinite;
+}
+
+.cat-yarn {
+  transform-origin: 330px 210px;
+  animation: yarnRoll 1.2s ease-in-out infinite;
+}
+
+.cat-ear-left {
+  transform-origin: 88px 95px;
+  animation: earTwitch 3s ease-in-out infinite;
+}
+
+.cat-ear-right {
+  transform-origin: 142px 95px;
+  animation: earTwitch 3s ease-in-out 0.5s infinite;
+}
+
+.cat-eye-left,
+.cat-eye-right {
+  animation: catBlink 4s ease-in-out infinite;
+}
+
+@keyframes catBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes catHeadBob {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-3deg); }
+  70% { transform: rotate(2deg); }
+}
+
+@keyframes catTailWag {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(18deg); }
+}
+
+@keyframes catPawBat {
+  0%, 100% { transform: rotate(0deg) translateY(0); }
+  40% { transform: rotate(-28deg) translateY(-12px); }
+  60% { transform: rotate(-18deg) translateY(-6px); }
+}
+
+@keyframes yarnRoll {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  40% { transform: translateX(-14px) rotate(-25deg); }
+  60% { transform: translateX(-8px) rotate(-12deg); }
+}
+
+@keyframes earTwitch {
+  0%, 90%, 100% { transform: rotate(0deg); }
+  93% { transform: rotate(-8deg); }
+  96% { transform: rotate(4deg); }
+}
+
+@keyframes catBlink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
 }
 
 .hero-photo {
@@ -667,6 +770,18 @@ section {
   }
   .floating-heart, .sparkle { display: none; }
   .fade-in { opacity: 1; transform: none; }
+
+  .cat-body,
+  .cat-head,
+  .cat-tail,
+  .cat-paw-play,
+  .cat-yarn,
+  .cat-ear-left,
+  .cat-ear-right,
+  .cat-eye-left,
+  .cat-eye-right {
+    animation: none !important;
+  }
 }
 
 @media (max-width: 480px) {
@@ -674,6 +789,7 @@ section {
   .hero { min-height: 70vh; }
   .hero-card { padding: 2rem 1.25rem 1.75rem; }
   .hero-photo { width: 130px; height: 130px; }
+  .hero-cat { width: min(300px, 95vw); margin-top: 0; }
   .message-card { padding: 1.75rem 1.25rem; }
   .photo-grid { gap: 0.75rem; }
   .gallery-videos { grid-template-columns: 1fr; }
