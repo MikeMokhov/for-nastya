@@ -258,37 +258,37 @@ section {
 }
 
 .cat-body {
-  transform-origin: 180px 200px;
+  transform-origin: 190px 232px;
   animation: catBounce 2.4s ease-in-out infinite;
 }
 
 .cat-head {
-  transform-origin: 115px 165px;
+  transform-origin: 132px 182px;
   animation: catHeadBob 2.4s ease-in-out infinite;
 }
 
 .cat-tail {
-  transform-origin: 260px 195px;
+  transform-origin: 285px 218px;
   animation: catTailWag 1.8s ease-in-out infinite;
 }
 
 .cat-paw-play {
-  transform-origin: 268px 210px;
+  transform-origin: 295px 217px;
   animation: catPawBat 1.2s ease-in-out infinite;
 }
 
 .cat-yarn {
-  transform-origin: 330px 210px;
+  transform-origin: 355px 228px;
   animation: yarnRoll 1.2s ease-in-out infinite;
 }
 
 .cat-ear-left {
-  transform-origin: 88px 95px;
+  transform-origin: 98px 100px;
   animation: earTwitch 3s ease-in-out infinite;
 }
 
 .cat-ear-right {
-  transform-origin: 142px 95px;
+  transform-origin: 162px 100px;
   animation: earTwitch 3s ease-in-out 0.5s infinite;
 }
 

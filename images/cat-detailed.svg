@@ -1,0 +1,122 @@
+<svg class="ginger-cat" viewBox="0 0 480 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="furOrange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8b04a"/>
+      <stop offset="100%" stop-color="#d97316"/>
+    </linearGradient>
+    <linearGradient id="furDeep" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8871a"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="bellyFur" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff7ed"/>
+      <stop offset="100%" stop-color="#fed7aa"/>
+    </linearGradient>
+    <radialGradient id="eyeGreen" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#a3e635"/>
+      <stop offset="55%" stop-color="#65a30d"/>
+      <stop offset="100%" stop-color="#365314"/>
+    </radialGradient>
+    <radialGradient id="yarnGrad" cx="35%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#ffc0cb"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="235" cy="298" rx="130" ry="14" fill="#be185d" opacity="0.1"/>
+
+  <g class="cat-tail">
+    <path d="M285 218 C320 190 350 150 368 115 C378 95 375 78 362 68" stroke="#b45309" stroke-width="26" fill="none" stroke-linecap="round"/>
+    <path d="M285 218 C320 190 350 150 368 115 C378 95 375 78 362 68" stroke="url(#furOrange)" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <path d="M300 205 C325 180 348 145 360 120" stroke="#92400e" stroke-width="3" fill="none" opacity="0.35" stroke-linecap="round"/>
+    <path d="M310 198 C330 175 350 145 365 125" stroke="#92400e" stroke-width="2.5" fill="none" opacity="0.3" stroke-linecap="round"/>
+    <path d="M362 68 C365 62 370 58 376 56 C382 54 388 56 390 62" fill="#f8b04a" stroke="#b45309" stroke-width="1"/>
+  </g>
+
+  <g class="cat-body">
+    <ellipse cx="210" cy="235" rx="28" ry="18" fill="url(#furDeep)"/>
+    <ellipse cx="195" cy="228" rx="105" ry="62" fill="url(#furDeep)"/>
+    <ellipse cx="190" cy="232" rx="88" ry="48" fill="url(#furOrange)"/>
+    <ellipse cx="175" cy="238" rx="55" ry="32" fill="url(#bellyFur)"/>
+    <path d="M130 215 Q155 198 180 215 Q205 228 230 218" stroke="#92400e" stroke-width="4" fill="none" opacity="0.35" stroke-linecap="round"/>
+    <path d="M145 235 Q170 220 195 235 Q220 245 245 230" stroke="#92400e" stroke-width="3.5" fill="none" opacity="0.3" stroke-linecap="round"/>
+    <path d="M155 248 Q185 235 215 248" stroke="#92400e" stroke-width="3" fill="none" opacity="0.25" stroke-linecap="round"/>
+    <ellipse cx="155" cy="210" rx="22" ry="14" fill="#fff7ed" opacity="0.85"/>
+    <ellipse cx="175" cy="205" rx="18" ry="12" fill="#fff7ed" opacity="0.7"/>
+  </g>
+
+  <g class="cat-paws">
+    <g>
+      <ellipse cx="155" cy="278" rx="24" ry="14" fill="url(#furDeep)"/>
+      <ellipse cx="155" cy="280" rx="18" ry="10" fill="url(#furOrange)"/>
+      <circle cx="145" cy="283" r="3.5" fill="#ffb6c1"/><circle cx="155" cy="285" r="3.5" fill="#ffb6c1"/>
+      <circle cx="165" cy="283" r="3.5" fill="#ffb6c1"/>
+    </g>
+    <g>
+      <ellipse cx="235" cy="278" rx="24" ry="14" fill="url(#furDeep)"/>
+      <ellipse cx="235" cy="280" rx="18" ry="10" fill="url(#furOrange)"/>
+      <circle cx="225" cy="283" r="3.5" fill="#ffb6c1"/><circle cx="235" cy="285" r="3.5" fill="#ffb6c1"/>
+      <circle cx="245" cy="283" r="3.5" fill="#ffb6c1"/>
+    </g>
+    <g class="cat-paw-play">
+      <ellipse cx="295" cy="215" rx="20" ry="17" fill="url(#furDeep)"/>
+      <ellipse cx="295" cy="217" rx="15" ry="13" fill="url(#furOrange)"/>
+      <circle cx="287" cy="220" r="3" fill="#ffb6c1"/><circle cx="295" cy="222" r="3" fill="#ffb6c1"/>
+      <circle cx="303" cy="220" r="3" fill="#ffb6c1"/>
+    </g>
+  </g>
+
+  <g class="cat-head">
+    <ellipse cx="135" cy="178" rx="58" ry="52" fill="url(#furDeep)"/>
+    <ellipse cx="132" cy="182" rx="50" ry="46" fill="url(#furOrange)"/>
+    <ellipse cx="118" cy="195" rx="16" ry="12" fill="#fff7ed" opacity="0.75"/>
+    <ellipse cx="148" cy="195" rx="16" ry="12" fill="#fff7ed" opacity="0.75"/>
+    <g class="cat-ear cat-ear-left">
+      <path d="M88 128 L98 78 L118 132 Z" fill="url(#furDeep)"/>
+      <path d="M93 128 L100 88 L112 130 Z" fill="#ffb6c1"/>
+      <path d="M96 115 L100 95 L108 118" stroke="#f9a8d4" stroke-width="1.5" fill="none"/>
+    </g>
+    <g class="cat-ear cat-ear-right">
+      <path d="M148 132 L162 82 L182 128 Z" fill="url(#furDeep)"/>
+      <path d="M153 130 L163 92 L175 126 Z" fill="#ffb6c1"/>
+      <path d="M158 115 L164 96 L172 118" stroke="#f9a8d4" stroke-width="1.5" fill="none"/>
+    </g>
+    <path d="M108 148 L132 138 L156 148" stroke="#92400e" stroke-width="3" fill="none" opacity="0.35" stroke-linecap="round"/>
+    <path d="M118 158 L132 152 L146 158" stroke="#92400e" stroke-width="2" fill="none" opacity="0.25" stroke-linecap="round"/>
+    <ellipse class="cat-eye cat-eye-left" cx="112" cy="172" rx="11" ry="13" fill="url(#eyeGreen)"/>
+    <ellipse class="cat-eye cat-eye-right" cx="152" cy="172" rx="11" ry="13" fill="url(#eyeGreen)"/>
+    <ellipse cx="112" cy="172" rx="5" ry="10" fill="#1c1917"/>
+    <ellipse cx="152" cy="172" rx="5" ry="10" fill="#1c1917"/>
+    <circle cx="109" cy="167" r="3" fill="white" opacity="0.95"/>
+    <circle cx="149" cy="167" r="3" fill="white" opacity="0.95"/>
+    <circle cx="114" cy="175" r="1.5" fill="white" opacity="0.6"/>
+    <circle cx="154" cy="175" r="1.5" fill="white" opacity="0.6"/>
+    <path d="M108 162 Q112 160 116 162" stroke="#78350f" stroke-width="1.5" fill="none"/>
+    <path d="M148 162 Q152 160 156 162" stroke="#78350f" stroke-width="1.5" fill="none"/>
+    <ellipse cx="132" cy="188" rx="7" ry="5" fill="#fb7185"/>
+    <path d="M129 190 L132 194 L135 190" fill="#f43f5e"/>
+    <circle cx="129" cy="189" r="1" fill="#881337" opacity="0.5"/>
+    <circle cx="135" cy="189" r="1" fill="#881337" opacity="0.5"/>
+    <path d="M132 194 Q128 200 124 202" stroke="#92400e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M132 194 Q136 200 140 202" stroke="#92400e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+    <path d="M132 195 Q132 199 132 202" stroke="#92400e" stroke-width="1.2" fill="none"/>
+    <ellipse cx="132" cy="201" rx="3" ry="2" fill="#fda4af"/>
+    <path d="M78 178 Q55 172 42 168" stroke="#92400e" stroke-width="1.2" fill="none" opacity="0.55"/>
+    <path d="M78 186 Q52 184 38 186" stroke="#92400e" stroke-width="1.2" fill="none" opacity="0.5"/>
+    <path d="M78 194 Q54 198 40 202" stroke="#92400e" stroke-width="1.2" fill="none" opacity="0.45"/>
+    <path d="M186 178 Q210 172 224 168" stroke="#92400e" stroke-width="1.2" fill="none" opacity="0.55"/>
+    <path d="M186 186 Q212 184 226 186" stroke="#92400e" stroke-width="1.2" fill="none" opacity="0.5"/>
+    <path d="M186 194 Q208 198 222 202" stroke="#92400e" stroke-width="1.2" fill="none" opacity="0.45"/>
+  </g>
+
+  <g class="cat-yarn">
+    <circle cx="355" cy="228" r="42" fill="url(#yarnGrad)"/>
+    <circle cx="355" cy="228" r="42" fill="none" stroke="#db2777" stroke-width="2" opacity="0.4"/>
+    <path d="M318 210 C335 195 355 188 375 198 C392 207 398 225 388 242" fill="none" stroke="#fce7f3" stroke-width="3" opacity="0.7"/>
+    <path d="M325 225 C345 215 365 215 385 228" fill="none" stroke="#fbcfe8" stroke-width="2.5" opacity="0.6"/>
+    <path d="M330 240 C350 235 370 238 388 248" fill="none" stroke="#f9a8d4" stroke-width="2" opacity="0.5"/>
+    <path d="M340 205 C355 198 370 205 378 218" fill="none" stroke="#fce7f3" stroke-width="2" opacity="0.45"/>
+    <path d="M395 228 C410 220 418 210 422 198" fill="none" stroke="#ff69b4" stroke-width="2.5" opacity="0.55" stroke-linecap="round"/>
+    <circle cx="422" cy="196" r="4" fill="#ff69b4" opacity="0.7"/>
+  </g>
+</svg>
