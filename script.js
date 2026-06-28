@@ -14,7 +14,7 @@ const LETTER_LINES = [
   'С тобой хочется замедляться и просто быть рядом.',
 ];
 
-const HERO_PHOTO = 'images/photo_2026-06-28_13-44-18.jpg';
+const HERO_PHOTO = 'images/photo_2026-06-12_18-59-02.jpg';
 
 const PHOTOS = [
   'images/photo_2025-03-08_20-58-44.jpg',
@@ -100,11 +100,9 @@ function initEnvelopeGate() {
 }
 
 // --- Hero background ---
-function initHeroBackground() {
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg) {
-    heroBg.style.backgroundImage = `url('${HERO_PHOTO}')`;
-  }
+function initHeroPhoto() {
+  const img = document.getElementById('hero-photo');
+  if (img) img.src = HERO_PHOTO;
 }
 
 // --- Floating hearts ---
@@ -524,7 +522,7 @@ function initYesButton() {
 // --- Init ---
 document.addEventListener('DOMContentLoaded', () => {
   initEnvelopeGate();
-  initHeroBackground();
+  initHeroPhoto();
   createHearts();
   createSparkles();
   initPhotoGallery();
@@ -548,12 +546,5 @@ window.addEventListener('resize', () => {
   if (canvas) {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-  }
-});
-
-window.addEventListener('scroll', () => {
-  const heroBg = document.querySelector('.hero-bg');
-  if (heroBg && !prefersReducedMotion) {
-    heroBg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
   }
 });

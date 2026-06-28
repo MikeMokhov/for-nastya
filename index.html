@@ -3,7 +3,7 @@
 <head>
   <script>
     (function () {
-      var v = '6';
+      var v = '7';
       var params = new URLSearchParams(location.search);
       if (params.get('v') !== v) {
         params.set('v', v);
@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
 </head>
 <body>
   <div id="envelope-gate" class="envelope-gate">
@@ -47,9 +47,8 @@
 
   <main id="main-content" class="main-hidden">
     <section class="hero fade-in" id="hero">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-content">
-        <div class="hero-heart" aria-hidden="true">💗</div>
+      <div class="hero-card">
+        <img class="hero-photo" id="hero-photo" src="" alt="Анастасия и я">
         <p class="hero-subtitle">С любовью, только для тебя</p>
         <h1 class="hero-title">
           <span class="title-line">Анастасия</span>
@@ -117,6 +116,6 @@
 
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
-  <script src="script.js?v=6"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
