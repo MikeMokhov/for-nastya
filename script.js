@@ -10,24 +10,45 @@ const SURPRISE = {
 // Email для получения ответа Анастасии (FormSubmit). Оставьте пустым — откроется «Поделиться».
 const NOTIFY_EMAIL = 'mikhail.mokhov.01@gmail.com';
 
-// Базовый URL — фото всегда с GitHub Pages (надёжно в Telegram и на телефоне)
-const SITE_BASE = 'https://mikemokhov.github.io/for-nastya/';
+// CDN для локального просмотра; на GitHub Pages — относительные пути, как у видео
+const SITE_CDN = 'https://mikemokhov.github.io/for-nastya/';
 
 function assetUrl(path) {
   if (!path || path.startsWith('http')) return path;
-  return SITE_BASE + path.replace(/^\//, '');
+  const clean = path.replace(/^\//, '');
+  if (
+    location.protocol === 'file:' ||
+    location.hostname === 'localhost' ||
+    location.hostname === '127.0.0.1'
+  ) {
+    return SITE_CDN + clean;
+  }
+  return clean;
 }
 
 function bindImageLoad(img, src) {
+  if (!img || !src) return;
   img.loading = 'eager';
   img.decoding = 'async';
   img.onerror = () => {
-    if (!img.dataset.retried) {
-      img.dataset.retried = '1';
-      img.src = assetUrl(src);
-    }
+    const fallback = SITE_CDN + src.replace(/^\//, '');
+    if (img.src !== fallback) img.src = fallback;
   };
   img.src = assetUrl(src);
+}
+
+function loadGalleryImages() {
+  const cards = document.querySelectorAll('#photo-grid .photo-card');
+  const stagger = window.matchMedia('(max-width: 768px)').matches;
+
+  cards.forEach((card, i) => {
+    const run = () => {
+      const img = card.querySelector('img');
+      const photo = PHOTOS[Number(card.dataset.index)];
+      if (img && photo) bindImageLoad(img, photo.src);
+    };
+    stagger ? setTimeout(run, i * 60) : run();
+  });
 }
 
 const LETTER_LINES = [
@@ -201,11 +222,7 @@ function initVideos() {
 
 function revealSiteMedia() {
   initHeroPhoto();
-  document.querySelectorAll('#photo-grid .photo-card').forEach((card) => {
-    const img = card.querySelector('img');
-    const photo = PHOTOS[Number(card.dataset.index)];
-    if (img && photo) bindImageLoad(img, photo.src);
-  });
+  loadGalleryImages();
   initVideos();
 }
 
