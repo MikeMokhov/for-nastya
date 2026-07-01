@@ -4,7 +4,7 @@
   <script>
     (function () {
       if (!location.pathname.endsWith('nastya.html')) {
-        location.replace('nastya.html?v=22');
+        location.replace('nastya.html?v=23');
       }
     })();
   </script>
@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=22">
+  <link rel="stylesheet" href="styles.css?v=23">
   <style>
     .hero-cat,.envelope-cat{display:block!important;opacity:1!important;width:100%;max-width:400px;margin:0 auto;line-height:0}
     .envelope-cat{max-width:320px;margin-bottom:1rem}
@@ -145,12 +145,39 @@
       <div class="surprise-card">
         <div class="surprise-icon" aria-hidden="true">✨</div>
         <h2 class="surprise-title">Ура! Жду тебя!</h2>
-        <p class="scratch-hint" id="scratch-hint">Сотри розовую плёнку, чтобы узнать детали</p>
-        <div class="scratch-wrap" id="scratch-wrap">
-          <div class="surprise-details" id="surprise-details"></div>
-          <canvas id="scratch-canvas"></canvas>
+
+        <form id="date-plan-form" class="date-plan-form" novalidate>
+          <p class="date-plan-intro">Расскажи, куда и когда тебе удобно — я всё организую 💕</p>
+          <label class="date-plan-field">
+            <span class="date-plan-label">Куда хотела бы сходить?</span>
+            <input type="text" id="plan-place" name="place" placeholder="Кафе, кино, прогулка, ресторан…" required autocomplete="off">
+          </label>
+          <label class="date-plan-field">
+            <span class="date-plan-label">Какая дата тебе удобна?</span>
+            <input type="date" id="plan-date" name="date" required>
+          </label>
+          <label class="date-plan-field">
+            <span class="date-plan-label">Время <span class="date-plan-optional">(необязательно)</span></span>
+            <input type="time" id="plan-time" name="time">
+          </label>
+          <button type="submit" class="btn btn-yes date-plan-submit">Отправить 💌</button>
+          <p class="date-plan-note" id="date-plan-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <div id="date-plan-thanks" class="date-plan-thanks hidden">
+          <p class="date-plan-thanks-title">Спасибо, красавица!</p>
+          <p class="date-plan-summary" id="plan-summary"></p>
+          <p class="date-plan-thanks-footer">Я уже мечтаю о нашей встрече 🥰</p>
         </div>
-        <p class="surprise-footer hidden" id="surprise-footer">До встречи, моя прекрасная 💕</p>
+
+        <div id="surprise-extra" class="surprise-extra hidden">
+          <p class="scratch-hint" id="scratch-hint">Сотри розовую плёнку — там кое-что от меня</p>
+          <div class="scratch-wrap" id="scratch-wrap">
+            <div class="surprise-details" id="surprise-details"></div>
+            <canvas id="scratch-canvas"></canvas>
+          </div>
+          <p class="surprise-footer hidden" id="surprise-footer">До встречи, моя прекрасная 💕</p>
+        </div>
       </div>
     </section>
   </main>
@@ -165,6 +192,6 @@
 
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
-  <script src="script.js?v=22"></script>
+  <script src="script.js?v=23"></script>
 </body>
 </html>

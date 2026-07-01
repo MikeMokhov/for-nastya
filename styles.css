@@ -876,9 +876,108 @@ section {
 }
 
 .scratch-hint {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
   margin-bottom: 1rem;
+}
+
+/* Date plan form */
+.date-plan-form {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.date-plan-intro {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.date-plan-field {
+  display: block;
+  margin-bottom: 1.1rem;
+}
+
+.date-plan-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--pink-deep);
+  margin-bottom: 0.4rem;
+}
+
+.date-plan-optional {
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+.date-plan-field input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 2px solid rgba(255, 182, 193, 0.7);
+  border-radius: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-dark);
+  background: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.date-plan-field input:focus {
+  outline: none;
+  border-color: var(--pink-hot);
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.2);
+}
+
+.date-plan-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.date-plan-note {
+  min-height: 1.25rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--pink-deep);
+  text-align: center;
+}
+
+.date-plan-thanks {
+  text-align: center;
+  padding: 0.5rem 0 1rem;
+}
+
+.date-plan-thanks-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  color: var(--pink-deep);
+  margin-bottom: 0.75rem;
+}
+
+.date-plan-summary {
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 240, 245, 0.8);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 182, 193, 0.5);
+}
+
+.date-plan-thanks-footer {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.surprise-extra {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 182, 193, 0.4);
 }
 
 .scratch-wrap {

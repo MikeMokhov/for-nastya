@@ -7,6 +7,24 @@ const SURPRISE = {
   note: 'Розовое платье — необязательно, но будет мило 💕',
 };
 
+// Email для получения ответа Анастасии (FormSubmit). Оставьте пустым — откроется «Поделиться».
+const NOTIFY_EMAIL = '';
+
+// Базовый URL — фото всегда грузятся с GitHub, даже если ПК выключен
+const SITE_BASE = (function () {
+  if (location.protocol === 'file:') return 'https://mikemokhov.github.io/for-nastya/';
+  if (location.hostname.includes('github.io')) return '';
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    return 'https://mikemokhov.github.io/for-nastya/';
+  }
+  return '';
+})();
+
+function assetUrl(path) {
+  if (!path || path.startsWith('http')) return path;
+  return SITE_BASE + path.replace(/^\//, '');
+}
+
 const LETTER_LINES = [
   'Каждый день с тобой — как маленькое чудо.',
   'Твоя улыбка делает мир мягче и светлее.',
@@ -161,7 +179,7 @@ function initEnvelopeGate() {
 // --- Hero background ---
 function initHeroPhoto() {
   const img = document.getElementById('hero-photo');
-  if (img) img.src = HERO_PHOTO;
+  if (img) img.src = assetUrl(HERO_PHOTO);
 }
 
 // --- Floating hearts ---
@@ -264,7 +282,7 @@ function initPhotoGallery() {
     card.dataset.index = String(i);
 
     const img = document.createElement('img');
-    img.src = photo.src;
+    img.src = assetUrl(photo.src);
     img.alt = photo.caption;
     img.loading = 'lazy';
 
@@ -294,7 +312,7 @@ function closeLightbox() {
 
 function updateLightbox() {
   const photo = PHOTOS[lightboxIndex];
-  document.getElementById('lightbox-img').src = photo.src;
+  document.getElementById('lightbox-img').src = assetUrl(photo.src);
   document.getElementById('lightbox-caption').textContent = photo.caption;
 }
 
@@ -527,28 +545,100 @@ function initScratchCard() {
   }
 }
 
-function initYesButton() {
-  const btnYes = document.getElementById('btn-yes');
-  const surpriseSection = document.getElementById('surprise-section');
-  const questionSection = document.getElementById('question-section');
-  const buttonsWrap = document.getElementById('buttons-wrap');
+function formatDateRu(isoDate) {
+  if (!isoDate) return '';
+  const [y, m, d] = isoDate.split('-').map(Number);
+  const months = [
+    'января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+    'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря',
+  ];
+  return `${d} ${months[m - 1]} ${y}`;
+}
 
-  btnYes.addEventListener('click', () => {
+function buildPlanMessage(place, date, time) {
+  const when = time ? `${formatDateRu(date)}, ${time}` : formatDateRu(date);
+  return `Анастасия выбрала свидание 💕\nКуда: ${place}\nКогда: ${when}`;
+}
+
+async function sendPlanNotification(place, date, time) {
+  const message = buildPlanMessage(place, date, time);
+  const status = document.getElementById('date-plan-status');
+
+  if (NOTIFY_EMAIL) {
+    try {
+      const body = new FormData();
+      body.append('message', message);
+      body.append('_subject', 'Свидание — ответ Анастасии');
+      body.append('_captcha', 'false');
+      body.append('_template', 'table');
+      await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(NOTIFY_EMAIL)}`, {
+        method: 'POST',
+        body,
+        headers: { Accept: 'application/json' },
+      });
+      if (status) status.textContent = 'Я получил твой ответ на почту 💌';
+      return;
+    } catch (e) {
+      /* fallback below */
+    }
+  }
+
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: 'Наше свидание', text: message });
+      if (status) status.textContent = 'Спасибо! Я уже в курсе 💕';
+      return;
+    } catch (e) {
+      if (e.name === 'AbortError') return;
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(message);
+    if (status) status.textContent = 'Скопировано! Отправь мне в Telegram 💬';
+  } catch (e) {
+    if (status) status.textContent = 'Запомнил! Скоро напишу тебе 💕';
+  }
+}
+
+function initDatePlanForm() {
+  const form = document.getElementById('date-plan-form');
+  const dateInput = document.getElementById('plan-date');
+  if (!form || !dateInput) return;
+
+  const today = new Date().toISOString().slice(0, 10);
+  dateInput.min = today;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const place = document.getElementById('plan-place').value.trim();
+    const date = dateInput.value;
+    const time = document.getElementById('plan-time').value;
+    const submitBtn = form.querySelector('.date-plan-submit');
+
+    if (!place || !date) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Отправляю…';
+
+    await sendPlanNotification(place, date, time);
+
+    const when = time ? `${formatDateRu(date)}, ${time}` : formatDateRu(date);
+    document.getElementById('plan-summary').textContent = `${place} · ${when}`;
+
+    form.classList.add('hidden');
+    document.getElementById('date-plan-thanks').classList.remove('hidden');
+
     renderSurprise();
+    const extra = document.getElementById('surprise-extra');
+    extra.classList.remove('hidden');
+
     scratchRevealed = false;
-
-    buttonsWrap.style.display = 'none';
-    questionSection.querySelector('.question-title').textContent = 'Ты сделала мой день! 🥰';
-
-    surpriseSection.classList.remove('hidden');
-    surpriseSection.classList.add('visible', 'fade-in');
-
-    document.getElementById('scratch-hint').classList.remove('hidden');
-    document.getElementById('surprise-footer').classList.add('hidden');
-
     const canvas = document.getElementById('scratch-canvas');
     canvas.style.opacity = '1';
     canvas.style.pointerEvents = 'auto';
+    document.getElementById('scratch-hint').classList.remove('hidden');
+    document.getElementById('surprise-footer').classList.add('hidden');
 
     setTimeout(() => {
       const wrap = document.getElementById('scratch-wrap');
@@ -566,14 +656,44 @@ function initYesButton() {
       ctx.font = '500 14px Montserrat, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('✨ сотри здесь ✨', canvas.width / 2, canvas.height / 2);
+    }, 150);
 
-      if (prefersReducedMotion && window.scratchAutoReveal) {
-        window.scratchAutoReveal();
-      }
-    }, 100);
+    launchConfetti();
+    burstHearts();
+
+    setTimeout(() => {
+      extra.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 400);
+  });
+}
+
+function initYesButton() {
+  const btnYes = document.getElementById('btn-yes');
+  const surpriseSection = document.getElementById('surprise-section');
+  const questionSection = document.getElementById('question-section');
+  const buttonsWrap = document.getElementById('buttons-wrap');
+
+  btnYes.addEventListener('click', () => {
+    buttonsWrap.style.display = 'none';
+    questionSection.querySelector('.question-title').textContent = 'Ты сделала мой день! 🥰';
+
+    document.getElementById('date-plan-form').classList.remove('hidden');
+    document.getElementById('date-plan-thanks').classList.add('hidden');
+    document.getElementById('surprise-extra').classList.add('hidden');
+    document.getElementById('date-plan-status').textContent = '';
+
+    const submitBtn = document.querySelector('.date-plan-submit');
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Отправить 💌';
+    }
+
+    surpriseSection.classList.remove('hidden');
+    surpriseSection.classList.add('visible', 'fade-in');
 
     setTimeout(() => {
       surpriseSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      document.getElementById('plan-place').focus();
     }, 300);
   });
 }
@@ -590,6 +710,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initRunawayButton();
   initScratchCard();
+  initDatePlanForm();
   initYesButton();
 
   if (sessionStorage.getItem('letterOpened') === 'true') {
