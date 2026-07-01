@@ -10,19 +10,24 @@ const SURPRISE = {
 // Email для получения ответа Анастасии (FormSubmit). Оставьте пустым — откроется «Поделиться».
 const NOTIFY_EMAIL = 'mikhail.mokhov.01@gmail.com';
 
-// Базовый URL — фото всегда грузятся с GitHub, даже если ПК выключен
-const SITE_BASE = (function () {
-  if (location.protocol === 'file:') return 'https://mikemokhov.github.io/for-nastya/';
-  if (location.hostname.includes('github.io')) return '';
-  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-    return 'https://mikemokhov.github.io/for-nastya/';
-  }
-  return '';
-})();
+// Базовый URL — фото всегда с GitHub Pages (надёжно в Telegram и на телефоне)
+const SITE_BASE = 'https://mikemokhov.github.io/for-nastya/';
 
 function assetUrl(path) {
   if (!path || path.startsWith('http')) return path;
   return SITE_BASE + path.replace(/^\//, '');
+}
+
+function bindImageLoad(img, src) {
+  img.loading = 'eager';
+  img.decoding = 'async';
+  img.onerror = () => {
+    if (!img.dataset.retried) {
+      img.dataset.retried = '1';
+      img.src = assetUrl(src);
+    }
+  };
+  img.src = assetUrl(src);
 }
 
 const LETTER_LINES = [
@@ -151,6 +156,7 @@ function initEnvelopeGate() {
   if (sessionStorage.getItem('letterOpened') === 'true') {
     gate.classList.add('hidden');
     main.classList.remove('main-hidden');
+    requestAnimationFrame(() => revealSiteMedia());
     return;
   }
 
@@ -167,6 +173,7 @@ function initEnvelopeGate() {
       gate.classList.add('fade-out');
       main.classList.remove('main-hidden');
       sessionStorage.setItem('letterOpened', 'true');
+      revealSiteMedia();
 
       setTimeout(() => {
         gate.classList.add('hidden');
@@ -179,7 +186,27 @@ function initEnvelopeGate() {
 // --- Hero background ---
 function initHeroPhoto() {
   const img = document.getElementById('hero-photo');
-  if (img) img.src = assetUrl(HERO_PHOTO);
+  if (img) bindImageLoad(img, HERO_PHOTO);
+}
+
+function initVideos() {
+  document.querySelectorAll('.gallery-videos video').forEach((video) => {
+    video.querySelectorAll('source').forEach((source) => {
+      const path = source.getAttribute('src');
+      if (path) source.src = assetUrl(path);
+    });
+    video.load();
+  });
+}
+
+function revealSiteMedia() {
+  initHeroPhoto();
+  document.querySelectorAll('#photo-grid .photo-card').forEach((card) => {
+    const img = card.querySelector('img');
+    const photo = PHOTOS[Number(card.dataset.index)];
+    if (img && photo) bindImageLoad(img, photo.src);
+  });
+  initVideos();
 }
 
 // --- Floating hearts ---
@@ -282,9 +309,7 @@ function initPhotoGallery() {
     card.dataset.index = String(i);
 
     const img = document.createElement('img');
-    img.src = assetUrl(photo.src);
     img.alt = photo.caption;
-    img.loading = 'lazy';
 
     const caption = document.createElement('span');
     caption.className = 'photo-caption';
@@ -771,7 +796,6 @@ function initYesButton() {
 document.addEventListener('DOMContentLoaded', () => {
   if (window.mountGingerCat) window.mountGingerCat();
   initEnvelopeGate();
-  initHeroPhoto();
   createHearts();
   createSparkles();
   initPhotoGallery();
