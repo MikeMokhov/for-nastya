@@ -51,6 +51,27 @@ function loadGalleryImages() {
   });
 }
 
+function unlockMainContent() {
+  const gate = document.getElementById('envelope-gate');
+  const main = document.getElementById('main-content');
+  if (gate) gate.classList.add('hidden');
+  if (main) main.classList.remove('main-hidden');
+  document.querySelectorAll('.fade-in').forEach((el) => el.classList.add('visible'));
+  initHeroPhoto();
+  loadGalleryImages();
+  initVideos();
+}
+
+function restoreLetterIfOpened() {
+  if (sessionStorage.getItem('letterOpened') !== 'true') return;
+  letterStarted = true;
+  const container = document.getElementById('letter-text');
+  if (container) {
+    container.innerHTML = LETTER_LINES.map((l) => `<p class="letter-line">${l}</p>`).join('');
+  }
+  document.getElementById('letter-highlight')?.classList.remove('hidden');
+}
+
 const LETTER_LINES = [
   'Каждый день с тобой — как маленькое чудо.',
   'Твоя улыбка делает мир мягче и светлее.',
@@ -168,16 +189,12 @@ function burstEnvelopeSparkles() {
 
 function initEnvelopeGate() {
   const gate = document.getElementById('envelope-gate');
-  const main = document.getElementById('main-content');
   const btn = document.getElementById('open-envelope');
   const envelope = document.getElementById('envelope');
 
   createGateHearts();
 
   if (sessionStorage.getItem('letterOpened') === 'true') {
-    gate.classList.add('hidden');
-    main.classList.remove('main-hidden');
-    requestAnimationFrame(() => revealSiteMedia());
     return;
   }
 
@@ -192,13 +209,11 @@ function initEnvelopeGate() {
 
     setTimeout(() => {
       gate.classList.add('fade-out');
-      main.classList.remove('main-hidden');
       sessionStorage.setItem('letterOpened', 'true');
-      revealSiteMedia();
+      unlockMainContent();
 
       setTimeout(() => {
         gate.classList.add('hidden');
-        document.getElementById('hero').classList.add('visible');
       }, 800);
     }, 2000);
   });
@@ -824,11 +839,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initYesButton();
 
   if (sessionStorage.getItem('letterOpened') === 'true') {
-    document.getElementById('hero').classList.add('visible');
-    letterStarted = true;
-    const container = document.getElementById('letter-text');
-    container.innerHTML = LETTER_LINES.map((l) => `<p class="letter-line">${l}</p>`).join('');
-    document.getElementById('letter-highlight').classList.remove('hidden');
+    unlockMainContent();
+    restoreLetterIfOpened();
   }
 });
 

@@ -38,9 +38,7 @@ body {
 }
 
 .main-hidden {
-  visibility: hidden;
-  height: 0;
-  overflow: hidden;
+  display: none;
 }
 
 /* Envelope gate */
@@ -1041,6 +1039,13 @@ section {
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .fade-in {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 #confetti-canvas {
