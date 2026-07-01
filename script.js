@@ -8,7 +8,7 @@ const SURPRISE = {
 };
 
 // Email для получения ответа Анастасии (FormSubmit). Оставьте пустым — откроется «Поделиться».
-const NOTIFY_EMAIL = '';
+const NOTIFY_EMAIL = 'mikhail.mokhov.01@gmail.com';
 
 // Базовый URL — фото всегда грузятся с GitHub, даже если ПК выключен
 const SITE_BASE = (function () {
