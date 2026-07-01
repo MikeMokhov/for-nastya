@@ -560,26 +560,95 @@ function buildPlanMessage(place, date, time) {
   return `Анастасия выбрала свидание 💕\nКуда: ${place}\nКогда: ${when}`;
 }
 
+function buildPlanFormFields(place, date, time) {
+  const when = time ? `${formatDateRu(date)}, ${time}` : formatDateRu(date);
+  return {
+    message: buildPlanMessage(place, date, time),
+    place,
+    date,
+    time: time || '—',
+    _subject: 'Свидание — ответ Анастасии',
+    _captcha: 'false',
+    _template: 'table',
+  };
+}
+
+function sendViaFormSubmitIframe(email, fields) {
+  return new Promise((resolve) => {
+    let iframe = document.getElementById('formsubmit-frame');
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.name = 'formsubmit-frame';
+      iframe.id = 'formsubmit-frame';
+      iframe.title = 'formsubmit';
+      iframe.hidden = true;
+      document.body.appendChild(iframe);
+    }
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = `https://formsubmit.co/${email}`;
+    form.target = 'formsubmit-frame';
+
+    Object.entries(fields).forEach(([name, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = name;
+      input.value = value;
+      form.appendChild(input);
+    });
+
+    let settled = false;
+    const finish = (ok) => {
+      if (settled) return;
+      settled = true;
+      form.remove();
+      resolve(ok);
+    };
+
+    iframe.onload = () => finish(true);
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(() => finish(true), 4000);
+  });
+}
+
+async function sendViaFormSubmitAjax(email, fields) {
+  const body = new FormData();
+  Object.entries(fields).forEach(([name, value]) => body.append(name, value));
+
+  const res = await fetch(`https://formsubmit.co/ajax/${email}`, {
+    method: 'POST',
+    body,
+    headers: { Accept: 'application/json' },
+  });
+
+  if (!res.ok) throw new Error(`FormSubmit HTTP ${res.status}`);
+  const data = await res.json().catch(() => ({}));
+  if (data.success === false) throw new Error('FormSubmit rejected');
+  return true;
+}
+
 async function sendPlanNotification(place, date, time) {
   const message = buildPlanMessage(place, date, time);
   const status = document.getElementById('date-plan-status');
+  const fields = buildPlanFormFields(place, date, time);
 
   if (NOTIFY_EMAIL) {
     try {
-      const body = new FormData();
-      body.append('message', message);
-      body.append('_subject', 'Свидание — ответ Анастасии');
-      body.append('_captcha', 'false');
-      body.append('_template', 'table');
-      await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(NOTIFY_EMAIL)}`, {
-        method: 'POST',
-        body,
-        headers: { Accept: 'application/json' },
-      });
+      await sendViaFormSubmitAjax(NOTIFY_EMAIL, fields);
       if (status) status.textContent = 'Я получил твой ответ на почту 💌';
       return;
     } catch (e) {
-      /* fallback below */
+      console.warn('FormSubmit ajax failed, trying iframe fallback', e);
+    }
+
+    try {
+      await sendViaFormSubmitIframe(NOTIFY_EMAIL, fields);
+      if (status) status.textContent = 'Отправила! Я скоро увижу ответ на почте 💌';
+      return;
+    } catch (e) {
+      console.warn('FormSubmit iframe failed', e);
     }
   }
 
