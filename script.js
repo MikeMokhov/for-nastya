@@ -35,7 +35,7 @@ const LETTER_LINES = [
 const HERO_PHOTO = 'images/photo_2026-06-12_18-59-02.jpg';
 
 const PHOTOS = [
-  { src: 'images/photo_2025-03-08_20-58-44.jpg', caption: 'Наше самое начало 💕' },
+  { src: 'images/photo_2025-03-08_20-58-44.jpg', caption: 'Кадр, который всегда согревает сердце 💕' },
   { src: 'images/photo_2025-05-01_14-46-47.jpg', caption: 'С тобой даже обычный день — праздник' },
   { src: 'images/photo_2025-05-04_13-06-22.jpg', caption: 'Ты смеёшься — и мир светлеет' },
   { src: 'images/photo_2025-05-24_13-48-32.jpg', caption: 'Запомнил этот момент навсегда' },
