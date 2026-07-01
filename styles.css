@@ -992,32 +992,26 @@ section {
   margin: 0 auto 1rem;
   border-radius: 16px;
   overflow: hidden;
-  min-height: 160px;
+  min-height: 180px;
 }
 
 .surprise-details {
-  text-align: left;
-  padding: 1.25rem;
-}
-
-.surprise-detail {
+  text-align: center;
+  padding: 1.5rem 1rem;
   display: flex;
-  gap: 0.75rem;
-  align-items: flex-start;
-  padding: 0.75rem 0;
-  border-bottom: 1px dashed rgba(214, 51, 132, 0.2);
-  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 180px;
 }
 
-.surprise-detail:last-child {
-  border-bottom: none;
-}
-
-.surprise-label {
-  font-weight: 500;
-  color: var(--pink-deep);
-  min-width: 5.5rem;
-  flex-shrink: 0;
+.surprise-secret {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.75rem, 7vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.3;
+  color: #8b2252;
+  letter-spacing: 0.02em;
+  margin: 0;
 }
 
 #scratch-canvas {

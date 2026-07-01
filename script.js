@@ -504,21 +504,7 @@ function burstHearts() {
 // --- Surprise ---
 function renderSurprise() {
   const details = document.getElementById('surprise-details');
-  const items = [
-    { label: 'Место', value: SURPRISE.place },
-    { label: 'Когда', value: SURPRISE.datetime },
-    { label: 'Заметка', value: SURPRISE.note },
-  ];
-
-  details.innerHTML = items
-    .map(
-      (item) => `
-      <div class="surprise-detail">
-        <span class="surprise-label">${item.label}:</span>
-        <span class="surprise-value">${item.value}</span>
-      </div>`
-    )
-    .join('');
+  details.innerHTML = '<p class="surprise-secret">Секрет, но я люблю тебя</p>';
 }
 
 function initScratchCard() {
