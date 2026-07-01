@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta name="site-version" content="32">
+  <meta name="site-version" content="33">
   <script>
     (function () {
-      var V = '32';
+      var V = '33';
       var key = 'for-nastya-v';
       if (localStorage.getItem(key) !== V) {
         sessionStorage.removeItem('letterOpened');
@@ -29,7 +29,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=32">
+  <link rel="stylesheet" href="styles.css?v=33">
   <style>
     .hero-cat,.envelope-cat{display:block!important;opacity:1!important;width:100%;max-width:400px;margin:0 auto;line-height:0}
     .envelope-cat{max-width:320px;margin-bottom:1rem}
@@ -180,7 +180,9 @@
         <div id="surprise-extra" class="surprise-extra hidden">
           <p class="scratch-hint" id="scratch-hint">Сотри розовую плёнку — там кое-что от меня</p>
           <div class="scratch-wrap" id="scratch-wrap">
-            <div class="surprise-details" id="surprise-details"></div>
+            <div class="surprise-details" id="surprise-details">
+              <p class="surprise-secret">Секрет, но я люблю тебя</p>
+            </div>
             <canvas id="scratch-canvas"></canvas>
           </div>
           <p class="surprise-footer hidden" id="surprise-footer">До встречи, моя прекрасная 💕</p>
@@ -199,6 +201,17 @@
 
   <canvas id="confetti-canvas" aria-hidden="true"></canvas>
 
-  <script src="script.js?v=32"></script>
+  <script src="script.js?v=33"></script>
+  <script>
+    (function () {
+      function renderSurprise() {
+        var details = document.getElementById('surprise-details');
+        if (details) {
+          details.innerHTML = '<p class="surprise-secret">Секрет, но я люблю тебя</p>';
+        }
+      }
+      window.renderSurprise = renderSurprise;
+    })();
+  </script>
 </body>
 </html>
