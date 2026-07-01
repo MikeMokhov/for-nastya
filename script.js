@@ -54,7 +54,10 @@ function loadGalleryImages() {
 function unlockMainContent() {
   const gate = document.getElementById('envelope-gate');
   const main = document.getElementById('main-content');
-  if (gate) gate.classList.add('hidden');
+  if (gate) {
+    gate.classList.remove('fade-out');
+    gate.classList.add('hidden');
+  }
   if (main) main.classList.remove('main-hidden');
   document.querySelectorAll('.fade-in').forEach((el) => el.classList.add('visible'));
   initHeroPhoto();
@@ -342,6 +345,7 @@ function initPhotoGallery() {
 
     const img = document.createElement('img');
     img.alt = photo.caption;
+    bindImageLoad(img, photo.src);
 
     const caption = document.createElement('span');
     caption.className = 'photo-caption';

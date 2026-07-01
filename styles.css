@@ -31,6 +31,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   line-height: 1.7;
+  isolation: isolate;
 }
 
 .hidden {
@@ -59,6 +60,8 @@ body {
   opacity: 0;
   transform: scale(1.03);
   pointer-events: none;
+  visibility: hidden;
+  z-index: -1;
 }
 
 .gate-bg-pattern {
@@ -346,7 +349,7 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   overflow: hidden;
 }
 
@@ -389,7 +392,7 @@ body {
 
 main {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem 1.25rem 4rem;
@@ -658,6 +661,8 @@ section {
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   text-align: left;
+  position: relative;
+  z-index: 2;
 }
 
 .photo-card:hover {
@@ -671,6 +676,9 @@ section {
   object-fit: cover;
   display: block;
   border-radius: 2px;
+  position: relative;
+  z-index: 1;
+  background: #fff0f5;
 }
 
 .photo-caption {
@@ -1031,20 +1039,29 @@ section {
 
 /* Scroll fade-in */
 .fade-in {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1;
+  transform: translateY(0);
   transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in:not(.visible) {
+  opacity: 0;
+  transform: translateY(24px);
+  pointer-events: none;
 }
 
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 @media (max-width: 768px) {
-  .fade-in {
+  .fade-in,
+  .fade-in:not(.visible) {
     opacity: 1;
     transform: none;
+    pointer-events: auto;
   }
 }
 
